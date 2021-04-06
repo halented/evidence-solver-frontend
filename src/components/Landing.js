@@ -2,7 +2,8 @@ import magnifyingGlass from '../images/mag.png'
 import Buttons from '../bones/Buttons'
 import { Card } from 'antd'
 import gsap from 'gsap'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import GameSetup from './GameSetup'
 
 const extraSpace = {
     margin: '5%',
@@ -16,14 +17,22 @@ function Landing() {
         gsap.to('.mag', { duration: 2, maxWidth: '80%', rotation: 360, ease: "back" })
     })
 
+    const [showNewGameForm, setShowNewGameForm] = useState(false)
+    const [title, setTitle] = useState("I Can't Believe It's Not Clue")
+
     return (
         <Card
-            title="I Can't Believe It's Not Clue"
+            title={title}
             style={extraSpace}
-            hoverable
-            onClick={() => console.log("just checking")}>
-            <img src={magnifyingGlass} alt='magnifying glass' className='mag' />
-            <Buttons />
+            hoverable>
+            {showNewGameForm ?
+                <GameSetup />
+                :
+                <>
+                    <img src={magnifyingGlass} alt='magnifying glass' className='mag' />
+                    <Buttons setShowNewGameForm={setShowNewGameForm} setTitle={setTitle} />
+                </>
+            }
         </Card>
     )
 }
