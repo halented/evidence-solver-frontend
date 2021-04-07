@@ -1,35 +1,18 @@
-import { Form, Input, Button } from 'antd'
+import { useState } from 'react'
+import PlayerCountForm from './forms/PlayerCountForm'
+import UserForm from './forms/UserForm'
 
 function GameSetup() {
-    const [form] = Form.useForm()
-
-    const updateForm = (e) => {
-        form.setFieldsValue({
-            username: e.target.value
-        })
-    }
+    const [playerCount, setPlayerCount] = useState(0)
 
     return (
-        <Form
-            onFinish={(info) => console.log(info)}
-            form={form}>
-            <Form.Item
-                onChange={updateForm}
-                name='user'
-                label='Your Name'
-                rules={[
-                    {
-                        required: true,
-                        message: 'Your name is required',
-                    }
-                ]}>
-                <Input />
-            </Form.Item>
-
-            <Form.Item>
-                <Button htmlType='Submit'>Begin!</Button>
-            </Form.Item>
-        </Form>
+        <>
+            {playerCount ?
+                <UserForm playerCount={playerCount} />
+                :
+                <PlayerCountForm setPlayerCount={setPlayerCount} />
+            }
+        </>
     )
 }
 
