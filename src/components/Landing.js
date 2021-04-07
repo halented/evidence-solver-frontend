@@ -14,6 +14,7 @@ const extraSpace = {
 function Landing() {
 
     useEffect(() => {
+        if (showNewGameForm) { return }
         gsap.to('.mag', { duration: 2, maxWidth: '80%', rotation: 360, ease: "back" })
     })
 

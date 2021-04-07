@@ -25,12 +25,7 @@ function GameSetup() {
                 ]}>
                 <Input />
             </Form.Item>
-            <Form.Item>
-                Dynamic field for other players
-            </Form.Item>
-            <Form.Item>
 
-            </Form.Item>
             <Form.Item>
                 <Button htmlType='Submit'>Begin!</Button>
             </Form.Item>
