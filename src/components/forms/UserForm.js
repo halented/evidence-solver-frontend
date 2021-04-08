@@ -9,9 +9,7 @@ function UserForm({ playerCount }) {
     }
 
     const createPlayerInputs = () => {
-        console.log("yello")
         let formElements = new Array(playerCount - 1).fill(undefined).map((val, idx) => {
-            console.log("inside map")
             let name = `player ${idx + 1}`
             return (
                 <Form.Item
